@@ -44,7 +44,7 @@ npm run dev
 
 Open your web browser and navigate to [http://localhost:3001](http://localhost:3001) to access the api make sure you see the "Welcome to the Users API!" printed on the screen.
 
-Open a new tab on the web browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.
+Open a new tab on the web browser and navigate to [http://127.0.0.1:5173/](http://127.0.0.1:5173/) to access the application.
 
 ## Notes
 

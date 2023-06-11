@@ -61,5 +61,27 @@
     "phoneNumber": "19999999999",
     "acceptTerms": true,
     "password": "$2b$10$tvjh2Xtfg6Yc/0oEQi2iI.kiUoddOx1iuDlSaYwY8Vdr2fEur.ln2"
+  },
+  {
+    "id": 7,
+    "firstName": "stelios5",
+    "lastName": "stelis",
+    "email": "stelios5@text.com",
+    "country": "BD",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35799999999",
+    "acceptTerms": true,
+    "password": "$2b$10$VuDD0QtoZ/Xb3UQolD0/geczXNbzOLvfNdwgrJoKn5aj3mxt6VSkW"
+  },
+  {
+    "id": 8,
+    "firstName": "Stylianos",
+    "lastName": "Karydakissss",
+    "email": "stelios6@gmail.com",
+    "country": "CY",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35799999999",
+    "acceptTerms": true,
+    "password": "$2b$10$phtx8ARXxI6qMseU4Bbun.oak9XFf4clYNqqAXbo8OcyEm9qC0Sdm"
   }
 ]

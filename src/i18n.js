@@ -20,7 +20,7 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    lng: storedLanguage || "en", // Use the stored language or fallback to "en" (English)
+    lng: storedLanguage || "en",
   });
 
 // Update the selected language in localStorage when it changes

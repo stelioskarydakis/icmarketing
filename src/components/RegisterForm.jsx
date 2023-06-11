@@ -125,6 +125,7 @@ function RegisterForm() {
             <Field
               as="select"
               name="country"
+              id="country"
               component="select"
               className="form-select"
               options={CountryList().getData()}
@@ -151,6 +152,7 @@ function RegisterForm() {
             <Field
               as={PhoneInput}
               country={"cy"}
+              id="phoneNumber"
               value={formik.values.phoneNumber}
               onChange={(value) => formik.setFieldValue("phoneNumber", value)}
             />

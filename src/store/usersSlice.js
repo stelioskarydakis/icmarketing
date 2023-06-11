@@ -3,7 +3,6 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3001";
 
-// Load the user data from local storage if available
 const storedUser = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
@@ -20,8 +19,6 @@ const usersSlice = createSlice({
       state.user = action.payload;
       state.error = null;
       state.isLoggedIn = true;
-
-      // Store the user data in local storage
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     registerUserFailure: (state, action) => {
@@ -31,30 +28,20 @@ const usersSlice = createSlice({
       state.user = action.payload;
       state.error = null;
       state.isLoggedIn = true;
-
-      // Store the user data in local storage
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     loginUserFailure: (state, action) => {
-      if (action.payload === "Invalid credentials") {
-        state.error = "User not found. Please register.";
-      } else {
-        state.error = action.payload;
-      }
+      state.error = action.payload;
     },
     performLogout: (state) => {
       state.user = null;
       state.error = null;
       state.isLoggedIn = false;
-
-      // Remove the user data from local storage
       localStorage.removeItem("user");
     },
     editUserSuccess: (state, action) => {
       state.user = action.payload;
       state.error = null;
-
-      // Update the user data in local storage
       localStorage.setItem("user", JSON.stringify(action.payload));
     },
     editUserFailure: (state, action) => {
@@ -87,7 +74,11 @@ export const loginUser = (userData) => async (dispatch) => {
     const response = await axios.post(`${baseUrl}/api/login`, userData);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
-    dispatch(loginUserFailure(error.response.data.error));
+    if (error.response && error.response.status === 401) {
+      dispatch(loginUserFailure("Invalid credentials"));
+    } else {
+      dispatch(loginUserFailure("User not found"));
+    }
   }
 };
 

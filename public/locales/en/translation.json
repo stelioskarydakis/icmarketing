@@ -28,7 +28,8 @@
     "password": "Password",
     "signIn": "Sign In",
     "noAccount": "Don't have an account?",
-    "register": "Register"
+    "invalidCredentials": "Invalid credentials. Please try again.",
+    "noUserFound": "No user found with these credentials."
   },
   "register": {
     "title": "Register",
@@ -60,15 +61,17 @@
     "editProfile": "Edit Profile",
     "welcome": "Welcome"
   },
-  "admin": {
-    "dashboard": "Admin Dashboard",
-    "addProduct": "Add Product",
-    "editProduct": "Edit Product",
-    "deleteProduct": "Delete Product",
-    "viewProduct": "View Product"
+  "errorText": {
+    "required": "Required",
+    "invalidEmail": "Invalid email address",
+    "acceptTermsText": "Must accept terms and conditions",
+    "age": "Clients should be older than 18 years old",
+    "password": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol",
+    "passwordsMatch": "Passwords must match"
   },
   "terms": {
     "title": "Terms and Conditions",
+    "titleSmall": "Terms",
     "content": "These are the Terms and Conditions of our Company"
   },
   "singleProduct": {

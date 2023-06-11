@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import CountryList from "react-select-country-list";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function RegisterForm() {
   const dispatch = useDispatch();
@@ -28,30 +29,29 @@ function RegisterForm() {
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required("Required"),
-    lastName: Yup.string().required("Required"),
-    country: Yup.string().required("Required"),
+    firstName: Yup.string().required(t("errorText.required")),
+    lastName: Yup.string().required(t("errorText.required")),
+    country: Yup.string().required(t("errorText.required")),
     dateOfBirth: Yup.date()
       .max(
         new Date(new Date().setFullYear(new Date().getFullYear() - 18)),
-        "Clients should be older than 18 years old"
+        t("errorText.age")
       )
-      .required("Required"),
-    phoneNumber: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
+      .required(t("errorText.required")),
+    phoneNumber: Yup.string().required(t("errorText.required")),
+    email: Yup.string()
+      .email(t("errorText.invalidEmail"))
+      .required(t("errorText.required")),
     password: Yup.string()
-      .required("Required")
+      .required(t("errorText.required"))
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol"
+        t("errorText.password")
       ),
     confirmPassword: Yup.string()
-      .required("Required")
-      .oneOf([Yup.ref("password")], "Passwords must match"),
-    acceptTerms: Yup.boolean().oneOf(
-      [true],
-      "Must accept terms and conditions"
-    ),
+      .required(t("errorText.required"))
+      .oneOf([Yup.ref("password")], t("errorText.passwordsMatch")),
+    acceptTerms: Yup.boolean().oneOf([true], t("errorText.acceptTermsText")),
   });
 
   const onSubmit = async (values, { setSubmitting }) => {
@@ -62,7 +62,10 @@ function RegisterForm() {
         await dispatch(registerUser(values));
       }
       setSubmitting(false);
-      navigate("/");
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser) {
+        navigate("/");
+      }
     } catch (error) {
       console.log("Operation failed:", error);
       setSubmitting(false);
@@ -115,12 +118,15 @@ function RegisterForm() {
             label="register.dob"
             name="dateOfBirth"
           />
-          <div>
-            <label htmlFor="country">{t("register.country")}</label>
+          <div className="pb-3">
+            <label htmlFor="country" className="form-label">
+              {t("register.country")}
+            </label>
             <Field
               as="select"
               name="country"
               component="select"
+              className="form-select"
               options={CountryList().getData()}
             >
               <option value="">{t("register.selectCountry")}</option>
@@ -132,44 +138,54 @@ function RegisterForm() {
                   </option>
                 ))}
             </Field>
-            <ErrorMessage
-              name="country"
-              component="div"
-              className="error-message"
-            />
+            <ErrorMessage name="country">
+              {(errorMessage) => (
+                <div className="text-danger">{t(errorMessage)}</div>
+              )}
+            </ErrorMessage>
           </div>
-          <div>
-            <label htmlFor="phoneNumber">{t("register.phoneNumber")}</label>
+          <div className="pb-3">
+            <label htmlFor="phoneNumber" className="form-label">
+              {t("register.phoneNumber")}
+            </label>
             <Field
               as={PhoneInput}
-              country={"us"}
+              country={"cy"}
               value={formik.values.phoneNumber}
               onChange={(value) => formik.setFieldValue("phoneNumber", value)}
             />
-            <ErrorMessage
-              name="phoneNumber"
-              component="div"
-              className="error-message"
-            />
+            <ErrorMessage name="phoneNumber">
+              {(errorMessage) => (
+                <div className="text-danger">{t(errorMessage)}</div>
+              )}
+            </ErrorMessage>
           </div>
-          <div>
+          <div className="pb-3">
             <Field
               type="checkbox"
               id="acceptTerms"
               name="acceptTerms"
-              className="checkbox"
+              className="checkbox form-check-input"
             />
-            <label htmlFor="acceptTerms" className="checkbox-label">
-              {t("register.acceptTerms")}
+            <label htmlFor="acceptTerms" className="checkbox-label px-2">
+              <Link
+                to="/terms"
+                className="link-dark"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("register.acceptTerms")}
+              </Link>
             </label>
-            <ErrorMessage
-              name="acceptTerms"
-              component="div"
-              className="error-message"
-            />
+            <ErrorMessage name="acceptTerms">
+              {(errorMessage) => (
+                <div className="text-danger">{t(errorMessage)}</div>
+              )}
+            </ErrorMessage>
           </div>
           <button
             type="submit"
+            className="btn btn-primary mt-3"
             disabled={!formik.isValid || formik.isSubmitting}
           >
             {currentUser ? t("register.update") : t("register.register")}

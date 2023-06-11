@@ -3,8 +3,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NotFound = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="min-vh-100">
       <Container className="mt-5">
@@ -12,10 +15,10 @@ const NotFound = () => {
           <Col lg={6} md={8}>
             <div className="text-center">
               <h1 className="display-4">404</h1>
-              <p className="lead">Oops! Page not found</p>
-              <p>The page you are looking for does not exist.</p>
+              <p className="lead">{t("404.description")}</p>
+              <p>{t("404.notFound")}</p>
               <Link to="/" className="btn btn-primary">
-                Go back to Home
+                {t("404.goBack")}
               </Link>
             </div>
           </Col>

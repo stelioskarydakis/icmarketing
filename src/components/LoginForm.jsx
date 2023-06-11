@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
-import { loginUser } from "../store/usersSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, loginUserFailure } from "../store/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -11,28 +11,35 @@ function LoginForm() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
+  const error = useSelector((state) => state.users.error);
+
   const initialValues = {
     email: "",
     password: "",
   };
 
   const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Required"),
-    password: Yup.string().required("Required"),
+    email: Yup.string()
+      .email(t("errorText.invalidEmail"))
+      .required(t("errorText.required")),
+    password: Yup.string().required(t("errorText.required")),
   });
 
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       await dispatch(loginUser(values));
       setSubmitting(false);
-      navigate("/");
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser) {
+        navigate("/");
+      }
     } catch (error) {
       console.log("Login failed:", error);
       setSubmitting(false);
-      if (error.message === "Request failed with status code 400") {
-        formik.setErrors({ login: "User not found. Please register." });
+      if (error.response && error.response.status === 401) {
+        dispatch(loginUserFailure("Invalid credentials"));
       } else {
-        formik.setErrors({ login: "Login failed. Please try again." });
+        dispatch(loginUserFailure("User not found"));
       }
     }
   };
@@ -59,12 +66,15 @@ function LoginForm() {
               name="password"
               error={formik.errors.password || formik.errors.login}
             />
-            {formik.errors.login && (
-              <div className="error">{formik.errors.login}</div>
+            {error && error === "Invalid credentials" && (
+              <div className="text-danger">{t("login.invalidCredentials")}</div>
             )}
-
+            {error && error === "User not found" && (
+              <div className="text-danger">{t("login.noUserFound")}</div>
+            )}
             <button
               type="submit"
+              className="btn btn-primary mt-3"
               disabled={!formik.isValid || formik.isSubmitting}
             >
               {t("register.submit")}

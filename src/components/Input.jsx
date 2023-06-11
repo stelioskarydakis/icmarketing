@@ -7,10 +7,14 @@ function Input(props) {
   const { t } = useTranslation();
 
   return (
-    <div className="form-control">
-      <label htmlFor={name}>{t(label)}</label>
-      <Field id={name} name={name} {...rest} />
-      <ErrorMessage component="div" name={name} />
+    <div className="pb-3">
+      <label htmlFor={name} className="form-label">
+        {t(label)}
+      </label>
+      <Field id={name} name={name} {...rest} className="form-control" />
+      <ErrorMessage name={name}>
+        {(errorMessage) => <div className="text-danger">{t(errorMessage)}</div>}
+      </ErrorMessage>
     </div>
   );
 }

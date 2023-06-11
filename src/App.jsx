@@ -16,7 +16,7 @@ import {
   SingleProduct,
   NotFound,
 } from "./pages";
-import { AppNavbar, Footer } from "./components";
+import { AppNavbar, Footer, ScrollToTop } from "./components";
 
 const ProtectedRoute = ({ children }) => {
   const isLoggedIn = useSelector((state) => state.users.isLoggedIn);
@@ -32,6 +32,7 @@ const ProtectedRoute = ({ children }) => {
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <AppNavbar />
       <Routes>
         <Route path="/" element={<Home />} />

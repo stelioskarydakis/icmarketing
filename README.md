@@ -44,9 +44,11 @@ npm run dev
 
 Open your web browser and navigate to [http://localhost:3001](http://localhost:3001) to access the api make sure you see the "Welcome to the Users API!" printed on the screen.
 
-Open a new tab on the web browser and navigate to [http://127.0.0.1:5173/](http://127.0.0.1:5173/) to access the application.
+Open a new tab on the web browser and navigate to the url provided by the terminal for example (http://localhost:5173/ or http://127.0.0.1:5173/) to access the application.
 
 ## Notes
+
+Add new products to the products.json file and they will be automatically displayed. You need to add new increasing index for id, title, excerpt, and image and add the translations keys in en and gr locales in the public folder
 
 That was an awesome test! Thank you for the opportunity.
 Feel free to contact me for any questions at <mrkarydakis@gmail.com>

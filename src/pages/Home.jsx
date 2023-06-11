@@ -8,6 +8,7 @@ import {
   PremiumProductGrid,
 } from "../components";
 import { useSelector } from "react-redux";
+import MetaData from "../components/MetaData";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -16,27 +17,34 @@ const Home = () => {
   const isLoggedIn = useSelector((state) => state.users.isLoggedIn);
 
   return (
-    <section className="min-vh-100 my-[50px]">
-      <Container>
-        <Row>
-          <Col className="text-center mb-3">
-            <h1>{t("home.title")}</h1>
-            <p>{t("home.description")}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{!isLoggedIn && <PremiumButton />}</Col>
-        </Row>
-        <Row>
-          <Col>{isLoggedIn && <PremiumProductGrid />}</Col>
-        </Row>
-        <Row>
-          <Col>
-            <BasicProductGrid />
-          </Col>
-        </Row>
-      </Container>
-    </section>
+    <>
+      <MetaData
+        metaTitle={t("home.title")}
+        metaDescription={t("home.description")}
+      />
+
+      <section className="min-vh-100 my-[50px]">
+        <Container>
+          <Row>
+            <Col className="text-center mb-3">
+              <h1>{t("home.title")}</h1>
+              <p>{t("home.description")}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>{!isLoggedIn && <PremiumButton />}</Col>
+          </Row>
+          <Row>
+            <Col>{isLoggedIn && <PremiumProductGrid />}</Col>
+          </Row>
+          <Row>
+            <Col>
+              <BasicProductGrid />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </>
   );
 };
 export default Home;

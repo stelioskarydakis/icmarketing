@@ -33,12 +33,13 @@
   {
     "id": 4,
     "firstName": "stelios2",
-    "lastName": "jdjdj",
+    "lastName": "karydakis",
     "email": "stelios2@test.com",
     "country": "BH",
     "dateOfBirth": "1212-02-22",
     "phoneNumber": "35709999999",
-    "password": "$2b$10$3RkL4NB7rfWieEe/ewxo8.h0lnOj1y3HRHKzvFOuNUKubbTRPq3oO"
+    "password": "$2b$10$M.Ip09arrt.k7SpRYL26pOCDc0MDyIh9uIWJCRUfq.KeH1SbOyTMW",
+    "acceptTerms": true
   },
   {
     "id": 5,

@@ -6,10 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../store/usersSlice";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AppNavbar = () => {
-  const [lang, setLang] = useState("en");
+  const [lang, setLang] = useState(null);
   const user = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +20,16 @@ const AppNavbar = () => {
     navigate("/");
   };
 
+  //check the language in local storage and set it to the state
+  useEffect(() => {
+    const language = localStorage.getItem("language");
+    if (language) {
+      setLang(language);
+      i18n.changeLanguage(language);
+    }
+  }, []);
+
+  //change the language and set it to the local storage
   const changeLanguage = (language) => {
     setLang(language);
     i18n.changeLanguage(language);

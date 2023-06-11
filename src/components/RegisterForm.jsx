@@ -99,14 +99,12 @@ function RegisterForm() {
             label="register.firstName"
             name="firstName"
           />
-
           <FormikControl
             control="input"
             type="text"
             label="register.lastName"
             name="lastName"
           />
-
           {/* user is not allowed to update email so we need to check if he is logged in */}
           {!currentUser && (
             <FormikControl
@@ -116,28 +114,29 @@ function RegisterForm() {
               name="email"
             />
           )}
-
           <FormikControl
             control="input"
             type="password"
             label="register.password"
             name="password"
           />
-
+          <p>
+            <small className="text-secondary">
+              {t("register.passwordMustHave")}
+            </small>
+          </p>
           <FormikControl
             control="input"
             type="password"
             label="register.confirmPassword"
             name="confirmPassword"
           />
-
           <FormikControl
             control="input"
             type="date"
             label="register.dob"
             name="dateOfBirth"
           />
-
           {/* Use of the react-select-country-list package to get the list of countries */}
           <div className="pb-3">
             <label htmlFor="country" className="form-label">
@@ -166,7 +165,6 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
-
           {/* Use of the react-phone-input-2 package to get the phone code with default to cy 357 */}
           <div className="pb-3">
             <label htmlFor="phoneNumber" className="form-label">
@@ -185,7 +183,6 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
-
           {/* Checkbox for the terms and conditions and link to terms page */}
           <div className="pb-3">
             <Field
@@ -210,7 +207,6 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
-
           <button
             type="submit"
             className="btn btn-primary mt-3"

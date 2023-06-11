@@ -46,6 +46,7 @@
     "register": "Register",
     "update": "Update",
     "submit": "Submit",
+    "passwordMustHave": "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character and be 8 characters long",
     "haveAccount": "Already have an account?",
     "signIn": "Sign In"
   },

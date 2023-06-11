@@ -7,6 +7,7 @@ const BasicProductGrid = () => {
   return (
     <div>
       <h2 className="text-center mb-2">{t("home.basicProducts")}</h2>
+      {/* we add the premium prop false in order to have the basic products */}
       <Product premium={false} />
     </div>
   );

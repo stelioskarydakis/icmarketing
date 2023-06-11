@@ -83,5 +83,16 @@
     "phoneNumber": "35799999999",
     "acceptTerms": true,
     "password": "$2b$10$phtx8ARXxI6qMseU4Bbun.oak9XFf4clYNqqAXbo8OcyEm9qC0Sdm"
+  },
+  {
+    "id": 9,
+    "firstName": "stelios7",
+    "lastName": "karydakis",
+    "email": "stelios7@test.com",
+    "country": "AW",
+    "dateOfBirth": "1222-02-22",
+    "phoneNumber": "35799999999",
+    "acceptTerms": true,
+    "password": "$2b$10$2MJPYQ9SQstbWiBEzRYbeu9bTZ.jHgt2C5h.GyfrzO81BJYogBkp."
   }
 ]

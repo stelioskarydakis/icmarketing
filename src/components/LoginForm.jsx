@@ -29,13 +29,14 @@ function LoginForm() {
     try {
       await dispatch(loginUser(values));
       setSubmitting(false);
+      // we store the user in localStorage and only then navigate to the home page
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser) {
         navigate("/");
       }
     } catch (error) {
-      console.log("Login failed:", error);
       setSubmitting(false);
+      //we check for error.response.status to see if the error is coming from the server and dispatch the appropriate action
       if (error.response && error.response.status === 401) {
         dispatch(loginUserFailure("Invalid credentials"));
       } else {
@@ -66,12 +67,14 @@ function LoginForm() {
               name="password"
               error={formik.errors.password || formik.errors.login}
             />
+            {/* we show the error block only if error exists */}
             {error && error === "Invalid credentials" && (
               <div className="text-danger">{t("login.invalidCredentials")}</div>
             )}
             {error && error === "User not found" && (
               <div className="text-danger">{t("login.noUserFound")}</div>
             )}
+            {/* we disable the button when user starts to type in the fields till he fills all correct and when is submitting */}
             <button
               type="submit"
               className="btn btn-primary mt-3"

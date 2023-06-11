@@ -14,8 +14,11 @@ function RegisterForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  // Check if the user is logged in so we are in edit mode
   const currentUser = useSelector((state) => state.users.user);
 
+  // Prefill the form with the user's data if we are in edit mode
   const initialValues = {
     firstName: currentUser ? currentUser.firstName : "",
     lastName: currentUser ? currentUser.lastName : "",
@@ -28,6 +31,11 @@ function RegisterForm() {
     confirmPassword: "",
   };
 
+  // Validation schema from Yup for all the fields
+  // all fields are required
+  // dateOfBirth must be at least 18 years ago
+  // password must contain at least one uppercase letter, one lowercase letter, one number and one special character and be 8 characters long
+  // confirmPassword must match password
   const validationSchema = Yup.object({
     firstName: Yup.string().required(t("errorText.required")),
     lastName: Yup.string().required(t("errorText.required")),
@@ -54,14 +62,19 @@ function RegisterForm() {
     acceptTerms: Yup.boolean().oneOf([true], t("errorText.acceptTermsText")),
   });
 
+  // Submit handler for the form
   const onSubmit = async (values, { setSubmitting }) => {
     try {
+      // Check if user is logged in so we dispatch the correct action
       if (currentUser) {
         await dispatch(editUser(values));
       } else {
         await dispatch(registerUser(values));
       }
+      // we set the submitting to false so the form is not disabled anymore
       setSubmitting(false);
+
+      // we check if the user is correctly registered or updated and if so we redirect him to the home page
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser) {
         navigate("/");
@@ -86,12 +99,15 @@ function RegisterForm() {
             label="register.firstName"
             name="firstName"
           />
+
           <FormikControl
             control="input"
             type="text"
             label="register.lastName"
             name="lastName"
           />
+
+          {/* user is not allowed to update email so we need to check if he is logged in */}
           {!currentUser && (
             <FormikControl
               control="input"
@@ -100,24 +116,29 @@ function RegisterForm() {
               name="email"
             />
           )}
+
           <FormikControl
             control="input"
             type="password"
             label="register.password"
             name="password"
           />
+
           <FormikControl
             control="input"
             type="password"
             label="register.confirmPassword"
             name="confirmPassword"
           />
+
           <FormikControl
             control="input"
             type="date"
             label="register.dob"
             name="dateOfBirth"
           />
+
+          {/* Use of the react-select-country-list package to get the list of countries */}
           <div className="pb-3">
             <label htmlFor="country" className="form-label">
               {t("register.country")}
@@ -145,6 +166,8 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
+
+          {/* Use of the react-phone-input-2 package to get the phone code with default to cy 357 */}
           <div className="pb-3">
             <label htmlFor="phoneNumber" className="form-label">
               {t("register.phoneNumber")}
@@ -162,6 +185,8 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
+
+          {/* Checkbox for the terms and conditions and link to terms page */}
           <div className="pb-3">
             <Field
               type="checkbox"
@@ -185,6 +210,7 @@ function RegisterForm() {
               )}
             </ErrorMessage>
           </div>
+
           <button
             type="submit"
             className="btn btn-primary mt-3"

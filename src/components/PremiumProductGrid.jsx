@@ -7,6 +7,7 @@ const PremiumProductGrid = () => {
   return (
     <div>
       <h2 className="text-center mb-2">{t("home.premiumProducts")}</h2>
+      {/* we add the premium prop true in order to have the premium products */}
       <Product premium={true} />
     </div>
   );

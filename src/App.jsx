@@ -11,7 +11,6 @@ import {
   Login,
   Register,
   Profile,
-  AdminDashboard,
   TermsAndConditions,
   SingleProduct,
   NotFound,
@@ -47,7 +46,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/terms" element={<TermsAndConditions />} />
         <Route path="*" element={<NotFound />} />

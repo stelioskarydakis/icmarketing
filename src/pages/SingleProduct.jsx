@@ -9,6 +9,8 @@ import { PremiumBadge } from "../components";
 const SingleProduct = () => {
   const { id } = useParams();
   const { t } = useTranslation();
+
+  // we find the product based on the id from the url and load the data
   const product = productsData.products.find(
     (product) => product.id === parseInt(id)
   );

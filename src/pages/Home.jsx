@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const { t } = useTranslation();
+
+  //we check if the user is logged in in order to show the premium products or the block with the button to go premium
   const isLoggedIn = useSelector((state) => state.users.isLoggedIn);
 
   return (

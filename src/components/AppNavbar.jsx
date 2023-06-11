@@ -6,8 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../store/usersSlice";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const AppNavbar = () => {
+  const [lang, setLang] = useState("en");
   const user = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,7 +19,9 @@ const AppNavbar = () => {
     dispatch(logoutUser());
     navigate("/");
   };
+
   const changeLanguage = (language) => {
+    setLang(language);
     i18n.changeLanguage(language);
   };
 
@@ -46,13 +50,13 @@ const AppNavbar = () => {
           <Nav className="gap-3">
             <div className="d-flex gap-1">
               <Button
-                variant="outline-dark"
+                variant={`${lang === "en" ? "dark" : "outline-dark"}`}
                 onClick={() => changeLanguage("en")}
               >
                 EN
               </Button>
               <Button
-                variant="outline-dark"
+                variant={`${lang === "gr" ? "dark" : "outline-dark"}`}
                 onClick={() => changeLanguage("gr")}
               >
                 GR

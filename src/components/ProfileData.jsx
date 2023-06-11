@@ -38,6 +38,7 @@ function ProfileData() {
 
   return (
     <div>
+      {/* if we have user's data, map over them */}
       {userData ? (
         <Table responsive>
           <tbody>

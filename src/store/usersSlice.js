@@ -3,6 +3,7 @@ import axios from "axios";
 
 const baseUrl = "http://localhost:3001";
 
+//when registering, login or updating a new user, the user object is stored in localStorage
 const storedUser = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
@@ -37,6 +38,7 @@ const usersSlice = createSlice({
       state.user = null;
       state.error = null;
       state.isLoggedIn = false;
+      //when the user logs out, the user object is removed from localStorage
       localStorage.removeItem("user");
     },
     editUserSuccess: (state, action) => {
@@ -62,6 +64,7 @@ export const {
 
 export const registerUser = (userData) => async (dispatch) => {
   try {
+    // we make a POST request to the backend to register the user to manage the user's password and data
     const response = await axios.post(`${baseUrl}/api/register`, userData);
     dispatch(registerUserSuccess(response.data));
   } catch (error) {
@@ -74,6 +77,7 @@ export const loginUser = (userData) => async (dispatch) => {
     const response = await axios.post(`${baseUrl}/api/login`, userData);
     dispatch(loginUserSuccess(response.data));
   } catch (error) {
+    //in the backend we return a 401 status code if the user is not found
     if (error.response && error.response.status === 401) {
       dispatch(loginUserFailure("Invalid credentials"));
     } else {

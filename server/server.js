@@ -9,21 +9,26 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
+// the path od users in a json file
 const usersFilePath = "server/users.json";
 
+// we get the users from the json file
 const getUsers = () => {
   const usersData = fs.readFileSync(usersFilePath, "utf-8");
   return JSON.parse(usersData);
 };
 
+// we save the users in the json file
 const saveUsers = (users) => {
   fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), "utf-8");
 };
 
+// base api route for checking if the server is running
 app.get("/", (req, res) => {
   res.send("Welcome to the Users API!");
 });
 
+//api route to register a new user
 app.post("/api/register", async (req, res) => {
   const {
     firstName,
@@ -36,6 +41,7 @@ app.post("/api/register", async (req, res) => {
     password,
   } = req.body;
 
+  // we check if the email is already in use
   const users = getUsers();
   const existingUser = users.find((user) => user.email === email);
   if (existingUser) {
@@ -43,6 +49,7 @@ app.post("/api/register", async (req, res) => {
   }
 
   try {
+    //we encrypt the password
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -61,12 +68,14 @@ app.post("/api/register", async (req, res) => {
     users.push(newUser);
     saveUsers(users);
 
+    // we return the new user
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
+// api route to edit a user
 app.put("/api/users/:id", async (req, res) => {
   const userId = req.params.id;
   const {
@@ -86,6 +95,7 @@ app.put("/api/users/:id", async (req, res) => {
   }
 
   try {
+    // we have to encrypt the password again
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -111,9 +121,11 @@ app.put("/api/users/:id", async (req, res) => {
   }
 });
 
+//api route to login a user
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
+  // we check if the email exists
   const users = getUsers();
   const user = users.find((user) => user.email === email);
   if (!user) {

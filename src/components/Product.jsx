@@ -10,6 +10,8 @@ const Product = ({ premium }) => {
   const { t } = useTranslation();
 
   // Filter the products based on the premium flag
+  // Add new products to the products.json file and they will be automatically displayed
+  // You need to add new increasing index for id, title, excerpt, and image and add the translations keys in en and gr locales
   const filteredProducts = productsData.products.filter(
     (product) => product.premium === premium
   );

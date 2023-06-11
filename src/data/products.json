@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "product1_title",
+      "excerpt": "product1_excerpt",
+      "description": "product1_description",
+      "image": "https://picsum.photos/seed/1/400/400",
+      "premium": false
+    },
+    {
+      "id": 2,
+      "title": "product2_title",
+      "excerpt": "product2_excerpt",
+      "description": "product2_description",
+      "image": "https://picsum.photos/seed/2/400/400",
+      "premium": true
+    },
+    {
+      "id": 3,
+      "title": "product3_title",
+      "excerpt": "product3_excerpt",
+      "description": "product3_description",
+      "image": "https://picsum.photos/seed/3/400/400",
+      "premium": false
+    },
+    {
+      "id": 4,
+      "title": "product4_title",
+      "excerpt": "product4_excerpt",
+      "description": "product4_description",
+      "image": "https://picsum.photos/seed/4/400/400",
+      "premium": true
+    },
+    {
+      "id": 5,
+      "title": "product5_title",
+      "excerpt": "product5_excerpt",
+      "description": "product5_description",
+      "image": "https://picsum.photos/seed/5/400/400",
+      "premium": false
+    },
+    {
+      "id": 6,
+      "title": "product6_title",
+      "excerpt": "product6_excerpt",
+      "description": "product6_description",
+      "image": "https://picsum.photos/seed/6/400/400",
+      "premium": true
+    }
+  ]
+}

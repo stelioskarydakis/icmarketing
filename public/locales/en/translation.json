@@ -1,0 +1,104 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "signIn": "Sign In",
+    "register": "Register",
+    "profile": "Profile",
+    "logout": "Logout",
+    "admin": "Admin"
+  },
+  "premium": {
+    "text": "Get access to exclusive content and features.",
+    "button": "Go Premium"
+  },
+  "home": {
+    "title": "Welcome to Our Website",
+    "description": "Discover our amazing products and services.",
+    "premiumProducts": "Premium Products",
+    "basicProducts": "Basic Products"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about our company and mission."
+  },
+  "login": {
+    "title": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "register": "Register"
+  },
+  "register": {
+    "title": "Register",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "country": "Country",
+    "dob": "Date of Birth",
+    "phoneNumber": "Phone Number",
+    "acceptTerms": "I accept the terms and conditions",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "selectCountry": "Select Country",
+    "register": "Register",
+    "update": "Update",
+    "submit": "Submit",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign In"
+  },
+  "profile": {
+    "title": "My Profile",
+    "updateData": "Update Personal Data",
+    "idCode": "ID Code",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "country": "Country",
+    "dob": "Date of Birth",
+    "phoneNumber": "Phone Number",
+    "editProfile": "Edit Profile",
+    "welcome": "Welcome"
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "deleteProduct": "Delete Product",
+    "viewProduct": "View Product"
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "content": "These are the Terms and Conditions of our Company"
+  },
+  "singleProduct": {
+    "notFound": "Product not found."
+  },
+  "404": {
+    "title": "404",
+    "description": "Oops! Page not found",
+    "notFound": "The page you are looking for does not exist.",
+    "goBack": "Go back to Home"
+  },
+  "productGrid": {
+    "viewDetails": "View Details",
+    "product1_title": "Product 1",
+    "product1_excerpt": "This is the excerpt for Product 1",
+    "product1_description": "This is the description for Product 1",
+    "product2_title": "Product 2",
+    "product2_excerpt": "This is the excerpt for Product 2",
+    "product2_description": "This is the description for Product 2",
+    "product3_title": "Product 3",
+    "product3_excerpt": "This is the excerpt for Product 3",
+    "product3_description": "This is the description for Product 3",
+    "product4_title": "Product 4",
+    "product4_excerpt": "This is the excerpt for Product 4",
+    "product4_description": "This is the description for Product 4",
+    "product5_title": "Product 5",
+    "product5_excerpt": "This is the excerpt for Product 5",
+    "product5_description": "This is the description for Product 5",
+    "product6_title": "Product 6",
+    "product6_excerpt": "This is the excerpt for Product 6",
+    "product6_description": "This is the description for Product 6"
+  }
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "firstName": "stelios",
+    "lastName": "karydakis",
+    "email": "stelios@gmail.com",
+    "country": "CY",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35722222222",
+    "password": "$2b$10$m945mkS3ec4/sv9pxiE4sO62W9I6Wq5thEzaM7b.RVg4nKxV.TLp2",
+    "acceptTerms": true
+  },
+  {
+    "id": 2,
+    "firstName": "Stylianos",
+    "lastName": "Karydakis",
+    "email": "stelioskarydakis1988@gmail.com",
+    "country": "CY",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35799999999",
+    "password": "$2b$10$Nm3WkeJCMOGSaUbAcAv3peFhQaCq4r7VXEvmkZq2YUYDPQlpaTp6i"
+  },
+  {
+    "id": 3,
+    "firstName": "sted",
+    "lastName": "sted",
+    "email": "stelios1@test.com",
+    "country": "BH",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35799999999",
+    "password": "$2b$10$hibwjqRnl8AQZPwmbNnFfOAOPL6JTBDDGZKP4oo4grz2uig7IJNKW"
+  },
+  {
+    "id": 4,
+    "firstName": "stelios2",
+    "lastName": "jdjdj",
+    "email": "stelios2@test.com",
+    "country": "BH",
+    "dateOfBirth": "1212-02-22",
+    "phoneNumber": "35709999999",
+    "password": "$2b$10$3RkL4NB7rfWieEe/ewxo8.h0lnOj1y3HRHKzvFOuNUKubbTRPq3oO"
+  }
+]
